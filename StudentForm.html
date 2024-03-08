@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    
+        <!-- Create h1 tag -->
+        <h1>STUDENT FORM</h1>
+
+        <!-- Create table  -->
+        <table border="border">
+            <tr>
+                <!-- Enter your Name -->
+                <th>Name</th>
+                <td><input type="text" id="name"></td>
+            </tr>
+            <tr>
+                <!-- Enter your Age -->
+                <th>Age</th>
+                <td><input type="number" id="age"></td>
+            </tr>
+            <tr>
+                <!-- Select your Gender -->
+                <th>Gender</th>
+                <td>
+                    <form>
+                        <input type="radio" name="Gender" value="Male">Male
+                        <input type="radio" name="Gender" value="FeMale">FeMale
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <!-- Select your Course -->
+                <th>Course</th>
+                <td>
+                    <select name="" id="select" onchange="sel()">
+                        <option value="JavaScript" id="js">JavaScript</option>
+                        <option value="HTML">HTML</option>
+                        <option value="CSS">CSS</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <!-- Enter your E-mail -->
+                <th>E-mail</th>
+                <td>
+                    <input type="text" id="email">
+                </td>
+            </tr>
+            <tr>
+                <!-- Create save button -->
+                <td>
+                    <button  onclick="save()">Save</button>
+                </td>
+            </tr>
+        </table>
+  
+<br>
+    <!-- Create Table and date -->
+    <table border="1px" id="tabledata">
+        <th>NAME</th>
+        <th>AGE</th>
+        <th>GENDER</th>
+        <th>COURSE</th>
+        <th>EMAIL</th>
+        <th>ACTION</th>
+    </table>
+
+   <script>
+        // Select course global variable assign
+        function sel() {
+                    Select = document.getElementById("select").value
+                }
+        // Save function
+        function save() {
+            // Manupulate HTML tables
+            var table = document.getElementById("tabledata"),
+                // create table Row and cell
+                newRow = table.insertRow(table.length),
+                cell1 = newRow.insertCell(0),
+                cell2 = newRow.insertCell(1),
+                cell3 = newRow.insertCell(2),
+                cell4 = newRow.insertCell(3),
+                cell5 = newRow.insertCell(4),
+                cell6 = newRow.insertCell(5),
+
+                // User input give
+                Name = document.getElementById("name").value,
+                Age = document.getElementById("age").value,
+                Email = document.getElementById("email").value
+
+                // Gender selection in HTML Form manipulate
+                var Form = document.forms[0]
+                var txt = " "
+                var i;
+                for (i = 0; i < Form.length; i++) {
+                    if (Form[i].checked) {
+                        txt += Form[i].value
+                        console.log(txt)
+                    }
+                }
+            
+            // cell content display
+            cell1.innerHTML = Name,
+            cell2.innerHTML = Age,
+            cell3.innerHTML = txt,
+            cell4.innerHTML = Select, 
+            cell5.innerHTML = Email,
+            cell6.innerHTML = "<button onclick = 'del(event)'>DELETE</button>"
+                
+        }
+
+        function del(event) {
+            event.target.parentElement.parentElement.remove()
+            console.log(event.target.parentElement.parentElement)
+        }
+   </script>
+   
+</body>
+</html>
